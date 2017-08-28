@@ -12,10 +12,10 @@ class Container
     CONST ARGUMENTS_KEY = "arguments";
     CONST CLASS_KEY = "class";
     CONST CALL_KEY = "call";
-    CONST LOCK_KEY = "call";
+    CONST LOCK_KEY = "lock";
 
     private $services;
-    private $parameter;
+    private $parameters;
     private $serviceStore;
 
     public function __construct(
