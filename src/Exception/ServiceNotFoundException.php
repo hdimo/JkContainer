@@ -1,10 +1,9 @@
 <?php 
 namespace Jk\Container\Exception;
 
-
 use Interop\Container\Exception\ContainerException as InteropContainerException;
 
-class ParameterNotFoundException 
+class ServiceNotFoundException
     extends \Exception 
-    implements InteropNotFoundException
+    implements InteropContainerException
 {}

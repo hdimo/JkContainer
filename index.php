@@ -6,20 +6,24 @@ require 'vendor/autoload.php';
 
 class MyClass 
 {
-    public function __construct(){
-
+    private $string;
+    public function __construct($string){
+        $this->string = $string;
     }
 }
 
 $services = [
     MyClass::class => [
         "class"=>MyClass::class,
+        "argument"=>[
+            "simple"
+        ]
     ]
 ];
 
 $container = new Container($services, []);
 
-$container->get(MyClass::class);
-//var_dump();
+$srv = $container->get(MyClass::class);
+var_dump($srv);
 
 
