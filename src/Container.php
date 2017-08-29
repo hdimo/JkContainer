@@ -6,7 +6,7 @@ use Jk\Container\Exception\ServiceNotFoundException;
 use Jk\Container\Exception\ContainerException;
 
 class Container
-    implements InteropContainerInterface
+    implements InteropContainerInterface , IParameterAware
 {
 
     CONST ARGUMENTS_KEY = "arguments";
@@ -21,8 +21,7 @@ class Container
     public function __construct(
         array $services,
         array $parameters
-    )
-    {
+    ){
 
         $this->services = $services;
         $this->parameters = $parameters;
@@ -62,6 +61,17 @@ class Container
             $context = $context[$token];
         }
         return $context;
+    }
+
+    /**
+     * check if parameter exists
+     *
+     * @param $name
+     * @return bool
+     */
+    public function hasParameter($name){
+        $it = new \RecursiveIteratorIterator(new \RecursiveArrayIterator($this->parameters));
+        return isset($it[$name]);
     }
 
     /**
